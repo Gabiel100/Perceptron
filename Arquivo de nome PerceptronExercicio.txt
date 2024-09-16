@@ -1,0 +1,3 @@
+Arquivo de nome PerceptronExercicios0002.dll corresponde ao exercício dois do pdf anexado.
+Arquivo de nome exercicio0001 corresponde ao exercício um do pdf anexado.
+Arquivo d enome PerceptronExercicioEquacao3, corresponde aos exemplos do pdf anexado.
