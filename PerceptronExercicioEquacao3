@@ -1,0 +1,49 @@
+import numpy as np
+
+class Perceptron:
+    def __init__(self, weights, threshold):
+        """
+        Inicializa um Perceptron com pesos e limiar.
+        
+        :param weights: Lista de pesos do Perceptron.
+        :param threshold: Limiar usado para ajustar a soma ponderada das entradas.
+        """
+        self.weights = weights
+        self.threshold = threshold
+    
+    def step_function(self, z):
+        """
+        Função de ativação do tipo Passo (Heaviside Step Function).
+        
+        :param z: Valor de entrada para a função de ativação.
+        :return: 1 se z >= 0, senão 0.
+        """
+        return 1 if z >= 0 else 0
+    
+    def predict(self, inputs):
+        """
+        Calcula a saída do Perceptron para um conjunto de entradas.
+        
+        :param inputs: Lista de entradas para o Perceptron.
+        :return: Resultado da função de ativação aplicada à soma ponderada das entradas menos o limiar.
+        """
+        # Calcula a soma ponderada
+        weighted_sum = np.dot(inputs, self.weights)
+        # Calcula o valor ajustado pelo limiar
+        adjusted_value = weighted_sum - self.threshold
+        # Aplica a função de ativação
+        output = self.step_function(adjusted_value)
+        return output
+
+if __name__ == "__main__":
+    # Exemplo 1
+    weights = np.array([1, 1, 2])  # Lista de pesos
+    threshold = 1.0  # Limiar
+    perceptron = Perceptron(weights, threshold)
+    
+    inputs = np.array([1, 1, 0])  # Lista de entradas
+    print("Saída para entradas [1, 1, 0]:", perceptron.predict(inputs))
+    
+    # Exemplo 2
+    inputs = np.array([0, 1, 1])  # Outra lista de entradas
+    print("Saída para entradas [0, 1, 1]:", perceptron.predict(inputs))
