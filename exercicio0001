@@ -1,0 +1,18 @@
+def neuron_output(x, w, threshold):
+    # def uma função x: Lista de entradas do neurônio  w: Lista de pesos correspondentes a cada entrada. threshold: Limiar de ativação que é comparado com a soma ponderada.
+    weighted_sum = sum(x_i * w_i for x_i, w_i in zip(x, w))
+    # weighted_sum = sum(x_i * w_i for x_i, w_i in zip(x, w))
+    # Determina a saída com base no limiar Aqui, zip(x, w) combina as listas de entradas e pesos em pares x_i * w_i calcula o produto de cada entrada e seu peso correspondente. sum(...) calcula a soma desses produtos. Essa soma é a soma ponderada das entradas.
+    output = 1 if weighted_sum >= threshold else 0
+    #Compara a soma ponderada (weighted_sum) com o limiar (threshold).
+    
+    return output
+# A função retorna a saída do neurônio, que pode ser 1 ou 0 com base na comparação com o limiar.
+# Valores fornecidos
+x = [1, 1, 2]
+w = [1, 1, 0]
+threshold = 1.5
+
+# Calcula a saída do neurônio
+output = neuron_output(x, w, threshold)
+print("Saída do neurônio:", output)
