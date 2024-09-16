@@ -1,0 +1,49 @@
+import math
+
+class Perceptron:
+    def __init__(self, weights, bias):
+        """
+        Inicializa um Perceptron com pesos e viés.
+        
+        :param weights: Lista de pesos do Perceptron.
+        :param bias: Valor do viés do Perceptron.
+        """
+        self.weights = weights
+        self.bias = bias
+    
+    def sigmoid(self, z):
+        """
+        Função de ativação sigmoide.
+        
+        :param z: Valor de entrada para a função sigmoide.
+        :return: Valor da função sigmoide.
+        """
+        return 1 / (1 + math.exp(-z))
+    
+    def predict(self, inputs):
+        """
+        Calcula a saída do Perceptron para um conjunto de entradas usando a função de ativação sigmoide.
+        
+        :param inputs: Lista de entradas para o Perceptron.
+        :return: Resultado da função de ativação aplicada à soma ponderada das entradas mais o viés.
+        """
+        # Calcula a soma ponderada
+        weighted_sum = sum(w * x for w, x in zip(self.weights, inputs))
+        # Adiciona o viés
+        z = self.bias + weighted_sum
+        # Aplica a função de ativação
+        output = self.sigmoid(z)
+        return output
+
+if __name__ == "__main__":
+    # Exemplo 1
+    weights = [0.5, -0.2, 0.1]  # Lista de pesos
+    bias = 1.0  # Valor do viés
+    perceptron = Perceptron(weights, bias)
+    
+    inputs = [1, 0, 1]  # Lista de entradas
+    print("Saída para entradas [1, 0, 1]:", perceptron.predict(inputs))
+    
+    # Exemplo 2
+    inputs = [0, 1, 1]  # Outra lista de entradas
+    print("Saída para entradas [0, 1, 1]:", perceptron.predict(inputs))
