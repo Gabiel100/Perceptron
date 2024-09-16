@@ -1,0 +1,43 @@
+# perceptron.py
+"""Comentários de múltiplas linhas são usados para 
+:documentar partes maiores do código ou 
+:fornecer descrições mais detalhadas.
+"""
+class Perceptron:
+    def __init__(self, weights, bias):
+        """
+        Inicializa uma instância do Perceptron com pesos e viés.
+        :param weights: Lista de pesos associados às entradas.
+        :param bias: Viés que é adicionado à soma ponderada das entradas.
+        """
+        # Atributos da classe que armazenam pesos e viés
+        self.weights = weights  # Linha 4: Armazena os pesos fornecidos como atributo da instância
+        self.bias = bias        # Linha 5: Armazena o viés fornecido como atributo da instância
+    
+    def predict(self, inputs):
+        """
+        Calcula a saída do Perceptron com base nas entradas fornecidas.
+        :param inputs: Lista de entradas para o Perceptron.
+        :return: Saída calculada do Perceptron.
+        """
+        # Calcula a soma ponderada das entradas
+        weighted_sum = sum(w * x for w, x in zip(self.weights, inputs))
+        # Adiciona o viés à soma ponderada para obter a saída final
+        output = self.bias + weighted_sum  # Linha 11: Soma o viés à soma ponderada das entradas para obter a saída
+        return output
+
+# Exemplos de uso
+if __name__ == "__main__":
+    # Exemplo 1
+    weights = [0.5, -0.2, 0.1]  # Linha 15: Lista de pesos que define a importância de cada entrada
+    bias = 1.0  # Linha 16: Valor do viés que é adicionado à soma ponderada das entradas
+    perceptron = Perceptron(weights, bias)  # Linha 17: Criação de uma instância da classe Perceptron com os pesos e viés fornecidos
+    
+    inputs = [1, 0, 1]  # Linha 19: Lista de entradas para o Perceptron
+    # Calcula e imprime a saída do Perceptron para as entradas fornecidas
+    print("Saída para entradas [1, 0, 1]:", perceptron.predict(inputs))
+    
+    # Exemplo 2
+    inputs = [0, 1, 1]  # Linha 23: Outra lista de entradas para o Perceptron
+    # Calcula e imprime a saída do Perceptron para as entradas fornecidas
+    print("Saída para entradas [0, 1, 1]:", perceptron.predict(inputs))
