@@ -1,0 +1,50 @@
+import numpy as np
+import math
+
+class Perceptron:
+    def __init__(self, weights, threshold):
+        """
+        Inicializa um Perceptron com pesos e limiar.
+        
+        :param weights: Lista de pesos do Perceptron.
+        :param threshold: Limiar usado para ajustar a soma ponderada.
+        """
+        self.weights = weights
+        self.threshold = threshold
+    
+    def sigmoid(self, z):
+        """
+        Função de ativação sigmoide.
+        
+        :param z: Valor de entrada para a função sigmoide.
+        :return: Valor da função sigmoide.
+        """
+        return 1 / (1 + math.exp(-z))
+    
+    def predict(self, inputs):
+        """
+        Calcula a saída do Perceptron para um conjunto de entradas.
+        
+        :param inputs: Lista de entradas para o Perceptron.
+        :return: Resultado da função de ativação aplicada à soma ponderada das entradas menos o limiar.
+        """
+        # Calcula a soma ponderada
+        weighted_sum = np.dot(inputs, self.weights)
+        # Calcula o valor ajustado pelo limiar
+        adjusted_value = weighted_sum - self.threshold
+        # Aplica a função de ativação
+        output = self.sigmoid(adjusted_value)
+        return output
+
+if __name__ == "__main__":
+    # Exemplo 1
+    weights = np.array([1, 1, 2])  # Lista de pesos
+    threshold = 1.0  # Limiar
+    perceptron = Perceptron(weights, threshold)
+    
+    inputs = np.array([1, 1, 0])  # Lista de entradas
+    print("Saída para entradas [1, 1, 0]:", perceptron.predict(inputs))
+    
+    # Exemplo 2
+    inputs = np.array([0, 1, 1])  # Outra lista de entradas
+    print("Saída para entradas [0, 1, 1]:", perceptron.predict(inputs))
