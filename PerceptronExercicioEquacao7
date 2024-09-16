@@ -1,1 +1,17 @@
+import numpy as np
+
+# Define the inputs
+x = np.array([1, 1, 0])
+
+# Define the weights
+w = np.array([1, 1, 2])
+
+# Calculate the weighted sum
+weighted_sum = np.dot(x, w)
+
+# Calculate the output
+y = weighted_sum
+
+# Print the output
+print("Output: ", y)
 
